@@ -1,0 +1,23 @@
++ javac -d bin src/ejercicios/Contenedor.java src/ejercicios/Main.java src/ejercicios/Par.java src/ejercicios/Persona.java src/ejercicios/PruebaPar.java
++ java -cp bin ejercicios.PruebaPar
+(Primero: Edad, Segundo: 20)
+par1 es igual a par2: true
+par1 es igual a par3: false
+par3 modificado: (Primero: Edad, Segundo: 20)
+Primero: Edad
+Segundo: 20
++ java -cp bin ejercicios.Main
+Pares del ejercicio 3:
+(Primero: Lenguajes de Programacion III, Segundo: 5)
+(Primero: 18.5, Segundo: true)
+(Primero: Gian Piero, Segundo: 20)
+
+Contenedor de vehiculos:
+(Primero: Volkswagen, Segundo: 2025)
+(Primero: Toyota, Segundo: 2024)
+(Primero: Kia, Segundo: 2023)
+
+Par en el indice 1:
+(Primero: Toyota, Segundo: 2024)
+
+Cantidad total de pares: 3

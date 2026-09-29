@@ -1,0 +1,9 @@
++ javac -d bin src/act3/IgualGenerico.java src/act3/Main.java
++ java -cp bin act3.Main
+Tipo integrado: true
+Object: true
+Integer: true
+String: true
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Object.equals(Object)" because "<parameter1>" is null
+	at act3.IgualGenerico.esIgualA(IgualGenerico.java:6)
+	at act3.Main.main(Main.java:17)

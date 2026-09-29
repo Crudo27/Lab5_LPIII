@@ -1,0 +1,21 @@
++ javac -d bin src/act1/InvalidSubscriptException.java src/act1/PruebaMetodoGenerico.java
++ java -cp bin act1.PruebaMetodoGenerico
+El arreglo arregloInteger contiene:
+1 2 3 4 5 6 
+Parte del arreglo arregloInteger:
+2 3 4 5 
+Elementos impresos: 4
+
+El arreglo arregloDouble contiene:
+1.1 2.2 3.3 4.4 5.5 6.6 7.7 
+Parte del arreglo arregloDouble:
+3.3 4.4 5.5 6.6 
+Elementos impresos: 4
+
+El arreglo arregloCharacter contiene:
+H O L A 
+Parte del arreglo arregloCharacter:
+H O L 
+Elementos impresos: 3
+
+Los subindices ingresados no son validos

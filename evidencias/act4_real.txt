@@ -1,0 +1,7 @@
++ javac -d bin src/act4/ExcepcionPilaLlena.java src/act4/ExcepcionPilaVacia.java src/act4/Main.java src/act4/Pila.java
+Note: src/act4/Pila.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
++ java -cp bin act4.Main
+pila1 es igual a pila2: true
+pila1 es igual a pila3: false
+Tope de pila1 despues de comparar: C

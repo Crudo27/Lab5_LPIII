@@ -1,0 +1,7 @@
++ javac -d bin src/act2/ExcepcionPilaLlena.java src/act2/ExcepcionPilaVacia.java src/act2/Main.java src/act2/Pila.java
+Note: src/act2/Pila.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
++ java -cp bin act2.Main
+La pila contiene 30: true
+La pila contiene 50: false
+Elemento retirado despues de buscar: 40
