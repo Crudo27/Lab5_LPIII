@@ -125,52 +125,45 @@ La temática se encuentra en los datos del programa principal y no en la clase, 
 
 Restringir un parámetro con `extends` establece un límite superior: el argumento de tipo debe ser la clase indicada o un subtipo. Esto permite al compilador asumir las operaciones disponibles en ese límite y rechazar tipos incompatibles. Por ejemplo, `<T extends Number> double doble(T valor)` puede aceptar `Integer` o `Double` y usar `doubleValue()`. En Generic Java, las variables de tipo se traducen usando sus límites durante el borrado, por lo que esos límites forman parte del mecanismo de seguridad estática (Bracha et al., 1998; Igarashi et al., 2001).
 
-**Fuentes:** Bracha et al. (1998); Igarashi et al. (2001).
 
 ## 2. Limitaciones de los generics y tipos primitivos
 
-Los parámetros genéricos representan tipos de referencia; por eso no es válido `List<int>` ni `Pila<double>`. Se usan envolventes como `Integer` y `Double`, con autoboxing cuando corresponde. Otra limitación procede del *type erasure*: gran parte de la información de los argumentos de tipo se elimina al compilar, lo que impide operaciones como `new T()`, `new T[]` y ciertas comprobaciones directas de tipos parametrizados en tiempo de ejecución. La literatura también documenta que el borrado introduce restricciones y mensajes de compilación que pueden ser poco intuitivos (Niño, 2007; Bracha et al., 1998).
+Los parámetros genéricos representan tipos de referencia; por eso no es válido `List<int>` ni `Pila<double>`. Se usan envolventes como `Integer` y `Double`, con autoboxing cuando corresponde. Otra limitación procede del *type erasure*: gran parte de la información de los argumentos de tipo se elimina al compilar, lo que impide operaciones como `new T()`, `new T[]` y ciertas comprobaciones directas de tipos parametrizados en tiempo de ejecución. La literatura también documenta que el borrado introduce restricciones y mensajes de compilación que pueden ser poco intuitivos (Gerakios et al., 2014; Bracha et al., 1998).
 
-**Fuentes:** Niño (2007); Bracha et al. (1998).
 
 ## 3. Caso de uso real de generics
 
 Una capa de acceso a datos puede definir `Repositorio<T>` con operaciones como `guardar(T objeto)` y `T buscarPorId(...)`. Luego pueden existir repositorios de clientes, vehículos o ventas sin duplicar la estructura básica y sin perder seguridad de tipos. El compilador evita que, por ejemplo, un repositorio de vehículos reciba por error un objeto de cliente. Esto reduce conversiones explícitas, hace visible la intención de la API y desplaza muchos errores de ejecución hacia la compilación (Bracha et al., 1998; Igarashi et al., 2001).
 
-**Fuentes:** Bracha et al. (1998); Igarashi et al. (2001).
 
 ## 4. Generics y jerarquías de clases
 
 La herencia del argumento de tipo no se traslada automáticamente al tipo parametrizado. Aunque `Integer` es subtipo de `Number`, `List<Integer>` no es subtipo de `List<Number>`. Esta invariancia evita inserciones inseguras. Para expresar relaciones más flexibles se usan wildcards, por ejemplo `? extends Number` para aceptar distintos subtipos en contextos principalmente de lectura y `? super Integer` para ciertos contextos de escritura. La interacción entre subtipado, parametrización y varianza es un aspecto central del diseño de los genéricos (Igarashi & Viroli, 2006; Torgersen et al., 2004).
 
-**Fuentes:** Igarashi y Viroli (2006); Torgersen et al. (2004).
 
 ## 5. ¿Qué es un wildcard?
 
 Un wildcard es un argumento de tipo representado por `?` que expresa un tipo desconocido. `List<?>` acepta una lista cuyo argumento exacto no se conoce; `List<? extends Number>` representa algún subtipo desconocido de `Number`; y `List<? super Integer>` representa algún supertipo desconocido de `Integer`. Los wildcards introducen varianza en el punto de uso y permiten tratar de forma segura distintas instancias de una misma clase parametrizada (Torgersen et al., 2004).
 
-**Fuente:** Torgersen et al. (2004).
 
 ## 6. Diferencia entre un parámetro `T` y un wildcard `?`
 
 `T` da nombre a un tipo y permite relacionarlo en varias partes de la declaración. Por ejemplo, `<T> T primero(List<T> lista)` expresa que el retorno tiene exactamente el mismo tipo que los elementos de la lista. `?`, en cambio, expresa un tipo desconocido cuando no se necesita nombrarlo: `void mostrar(List<?> lista)` puede recibir listas de argumentos distintos cuando el método solo necesita tratar sus elementos como `Object`. Si hay que vincular parámetros o el retorno con el mismo tipo, conviene `T`; si solo se necesita aceptar una familia de tipos sin nombrar el argumento exacto, suele bastar un wildcard (Torgersen et al., 2004).
 
-**Fuente:** Torgersen et al. (2004).
 
 ## 7. ¿Qué significa `<T extends Comparable<T>>`?
 
 Es un límite recursivo o *F-bounded*: `T` debe implementar `Comparable` parametrizado con el mismo `T`. Así el compilador sabe que un objeto `T` puede compararse con otro `T` mediante `compareTo`. Se utiliza en algoritmos de ordenación, máximos, mínimos y otras operaciones que dependen del orden natural. Por ejemplo, `<T extends Comparable<T>> T maximo(T a, T b)` puede invocar `a.compareTo(b)` sin conocer de antemano el tipo concreto (Igarashi et al., 2001; Bracha et al., 1998).
 
-**Fuentes:** Igarashi et al. (2001); Bracha et al. (1998).
 
 # 4. BIBLIOGRAFÍA
 
-Bracha, G., Odersky, M., Stoutamire, D., & Wadler, P. (1998). *Making the future safe for the past: Adding genericity to the Java programming language*. Proceedings of the ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications, 183–200. https://consensus.app/papers/making-the-future-safe-for-the-past-adding-genericity-to-the-bracha-odersky/4c6a11f6934d5388b889ce42d91d129e/?utm_source=chatgpt
+Bracha, G., Odersky, M., Stoutamire, D., & Wadler, P. (1998). *Making the future safe for the past: Adding genericity to the Java programming language*. Proceedings of the ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications, 183–200. doi: 10.1145/286936.286957
 
-Igarashi, A., Pierce, B. C., & Wadler, P. (2001). *Featherweight Java: A minimal core calculus for Java and GJ*. ACM Transactions on Programming Languages and Systems, 23, 396–450. https://consensus.app/papers/featherweight-java-a-minimal-core-calculus-for-java-and-gj-igarashi-pierce/63c6e5ef127d56a4b48911eeaa747bf6/?utm_source=chatgpt
+Igarashi, A., Pierce, B. C., & Wadler, P. (2001). *Featherweight Java: A minimal core calculus for Java and GJ*. ACM Transactions on Programming Languages and Systems, 23, 396–450. doi: 10.1145/503502.503505
 
-Igarashi, A., & Viroli, M. (2006). *Variant parametric types: A flexible subtyping scheme for generics*. ACM Transactions on Programming Languages and Systems, 28, 795–847. https://consensus.app/papers/variant-parametric-types-a-flexible-subtyping-scheme-for-igarashi-viroli/41ba626ef4c050c9820df0d6a064a655/?utm_source=chatgpt
+Igarashi, A., & Viroli, M. (2006). *Variant parametric types: A flexible subtyping scheme for generics*. ACM Transactions on Programming Languages and Systems, 28, 795–847. doi: 10.1145/1152649.1152650
 
-Niño, J. (2007). *The cost of erasure in Java generics type system*. Journal of Computing Sciences in Colleges, 22, 2–11. https://consensus.app/papers/the-cost-of-erasure-in-java-generics-type-system-niño/630c857f15d2545fb9446511cbd73561/?utm_source=chatgpt
+Gerakios, P., Biboudis, A., & Smaragdakis, Y. (2014). *Reified type parameters using Java annotations*. ACM SIGPLAN Notices, 49(3), 61–64. doi: 10.1145/2637365.2517223
 
-Torgersen, M., Hansen, C. P., Ernst, E., Bracha, G., & Gafter, N. (2004). *Adding wildcards to the Java programming language*. Journal of Object Technology, 3, 97–116. https://consensus.app/papers/adding-wildcards-to-the-java-programming-language-torgersen-hansen/15a0736c5d025323b4c2a1b6225097be/?utm_source=chatgpt
+Torgersen, M., Hansen, C. P., Ernst, E., Bracha, G., & Gafter, N. (2004). *Adding wildcards to the Java programming language*. Journal of Object Technology, 3, 97–116. doi: 10.5381/jot.2004.3.11.a5
