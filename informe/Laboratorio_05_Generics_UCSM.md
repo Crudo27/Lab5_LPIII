@@ -158,12 +158,12 @@ Es un límite recursivo o *F-bounded*: `T` debe implementar `Comparable` paramet
 
 # 4. BIBLIOGRAFÍA
 
-Bracha, G., Odersky, M., Stoutamire, D., & Wadler, P. (1998). *Making the future safe for the past: Adding genericity to the Java programming language*. Proceedings of the ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications, 183–200. doi: 10.1145/286936.286957
+Bracha, G., Odersky, M., Stoutamire, D., & Wadler, P. (1998). *Making the future safe for the past: Adding genericity to the Java programming language*. Proceedings of the ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications, 183–200. https://doi.org/10.1145/286936.286957
 
-Igarashi, A., Pierce, B. C., & Wadler, P. (2001). *Featherweight Java: A minimal core calculus for Java and GJ*. ACM Transactions on Programming Languages and Systems, 23, 396–450. doi: 10.1145/503502.503505
+Igarashi, A., Pierce, B. C., & Wadler, P. (2001). *Featherweight Java: A minimal core calculus for Java and GJ*. ACM Transactions on Programming Languages and Systems, 23, 396–450. https://doi.org/10.1145/503502.503505
 
-Igarashi, A., & Viroli, M. (2006). *Variant parametric types: A flexible subtyping scheme for generics*. ACM Transactions on Programming Languages and Systems, 28, 795–847. doi: 10.1145/1152649.1152650
+Igarashi, A., & Viroli, M. (2006). *Variant parametric types: A flexible subtyping scheme for generics*. ACM Transactions on Programming Languages and Systems, 28, 795–847. https://doi.org/10.1145/1152649.1152650
 
-Gerakios, P., Biboudis, A., & Smaragdakis, Y. (2014). *Reified type parameters using Java annotations*. ACM SIGPLAN Notices, 49(3), 61–64. doi: 10.1145/2637365.2517223
+Gerakios, P., Biboudis, A., & Smaragdakis, Y. (2014). *Reified type parameters using Java annotations*. ACM SIGPLAN Notices, 49(3), 61–64. https://doi.org/10.1145/2637365.2517223
 
-Torgersen, M., Hansen, C. P., Ernst, E., Bracha, G., & Gafter, N. (2004). *Adding wildcards to the Java programming language*. Journal of Object Technology, 3, 97–116. doi: 10.5381/jot.2004.3.11.a5
+Torgersen, M., Hansen, C. P., Ernst, E., Bracha, G., & Gafter, N. (2004). *Adding wildcards to the Java programming language*. Journal of Object Technology, 3, 97–116. https://doi.org/10.5381/jot.2004.3.11.a5
